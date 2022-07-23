@@ -25,6 +25,7 @@ const App = () => {
   return (
     <div>
       <h1> My Hackrz Stories </h1>
+      <Search />
       <hr />
       <List list={stories} />
     </div>
@@ -38,6 +39,25 @@ const List = ({ list }) => (
     ))}
   </ul>
 );
+
+const Search = () => {
+  let searchTerm = '';
+
+  const handleChange = (event) => {
+    searchTerm = event.target.value;
+    console.log(searchTerm);
+  };
+
+  return (
+    <div>
+      <label htmlFor="search"> Search : </label>
+      <input id="search" type="text" onChange={handleChange} />
+      <p>
+        Searching for <strong>{searchTerm}</strong>
+      </p>
+    </div>
+  );
+};
 
 const Item = ({ item }) => (
   <li>
