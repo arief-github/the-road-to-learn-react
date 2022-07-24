@@ -22,12 +22,22 @@ const App = () => {
     },
   ];
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const searchedStories = stories.filter((story) =>
+    story.title.includes(searchTerm)
+  );
+
   return (
     <div>
       <h1> My Hackrz Stories </h1>
-      <Search />
+      <Search onSearch={handleSearch} />
       <hr />
-      <List list={stories} />
+      <List list={searchedStories} />
     </div>
   );
 };
@@ -40,21 +50,11 @@ const List = ({ list }) => (
   </ul>
 );
 
-const Search = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    console.log(searchTerm);
-  };
-
+const Search = ({ onSearch }) => {
   return (
     <div>
       <label htmlFor="search"> Search : </label>
-      <input id="search" type="text" onChange={handleChange} />
-      <p>
-        Searching for <strong>{searchTerm}</strong>
-      </p>
+      <input id="search" type="text" onChange={onSearch} />
     </div>
   );
 };
