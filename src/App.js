@@ -1,5 +1,5 @@
 // Functional in React
-import React from 'react';
+import React, { useState } from 'react';
 
 // props
 const App = () => {
@@ -41,10 +41,10 @@ const List = ({ list }) => (
 );
 
 const Search = () => {
-  let searchTerm = '';
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleChange = (event) => {
-    searchTerm = event.target.value;
+    setSearchTerm(event.target.value);
     console.log(searchTerm);
   };
 
