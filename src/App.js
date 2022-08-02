@@ -22,7 +22,7 @@ const App = () => {
     },
   ];
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('React');
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -35,7 +35,7 @@ const App = () => {
   return (
     <div>
       <h1> My Hackrz Stories </h1>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleSearch} search={searchTerm} />
       <hr />
       <List list={searchedStories} />
     </div>
@@ -52,11 +52,11 @@ const List = ({ list }) => (
   </ul>
 );
 
-const Search = ({ onSearch }) => {
+const Search = ({ onSearch, search }) => {
   return (
     <div>
       <label htmlFor="search"> Search : </label>
-      <input id="search" type="text" onChange={onSearch} />
+      <input id="search" type="text" onChange={onSearch} value={search} />
     </div>
   );
 };
