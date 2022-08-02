@@ -1,5 +1,5 @@
 // Functional in React
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // parent const App yang menghandle state
 const App = () => {
@@ -21,7 +21,12 @@ const App = () => {
         },
     ];
 
-    const [searchTerm, setSearchTerm] = useState('React');
+    const [searchTerm, setSearchTerm] = useState( localStorage.getItem('search') || 'React');
+
+    // useEffect : dijalankan hanya jika ada perubahan pada searchTerm
+    useEffect(() => {
+      localStorage.setItem('search', searchTerm)
+    },[searchTerm]);
 
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
