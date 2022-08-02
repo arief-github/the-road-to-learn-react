@@ -1,7 +1,7 @@
 // Functional in React
 import React, { useState } from 'react';
 
-// props
+// parent const App yang menghandle state
 const App = () => {
   const stories = [
     {
@@ -42,6 +42,8 @@ const App = () => {
   );
 };
 
+
+// method list, search, item hanya passing props dan return view
 const List = ({ list }) => (
   <ul>
     {list.map((item) => (
