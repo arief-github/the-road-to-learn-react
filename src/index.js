@@ -2,5 +2,5 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
-import UseEf from './UseEf';
-ReactDOM.render(<UseEf />, document.getElementById("root"));
+import Phrase from './Phrase';
+ReactDOM.render(<Phrase />, document.getElementById("root"));
